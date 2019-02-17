@@ -8,17 +8,23 @@ function getAllFilePathsWithExtension(directoryPath, extension, filePaths) {
     for (const fileName of fileNames) {
         // TODO WinDev; ; Убедиться, что будет работать под Windows.
         const filePath = directoryPath + '/' + fileName;
+        if(filePath.endsWith(`.${extension}`)) {
+            filePaths.push(filePath);
+        }
+        /*
         if (fs.statSync(filePath).isDirectory()) {
             getAllFilePathsWithExtension(filePath, filePaths);
         } else if (filePath.endsWith(`.${extension}`)) {
             filePaths.push(filePath);
         }
+        */
     }
     return filePaths;
 }
 
 function readFile(filePath) {
-    return fs.readFileSync(filePath, 'utf8'); // TODO Veronika; 2018-08-16; сделать кодировку настраиваемой
+    let encoding = 'utf8';
+    return fs.readFileSync(filePath, encoding); // TODO Veronika; 2018-08-16; сделать кодировку настраиваемой
 }
 
 // TODO Digi; 2018-09-21; Добавить функцию getFileName, которая по пути файла будет возвращать его имя. Воспользоваться модулем path из Node.js

@@ -7,8 +7,8 @@ const rl = readline.createInterface({
   terminal: false
 });
 
-function readLine(callback) {
-    rl.on('line', callback); // TODO pe; 2015-08-10; а какая будет кодировка?
+function readLine(callback, arg) {
+    rl.on('line', (input) => callback(input, arg)); // TODO pe; 2015-08-10; а какая будет кодировка?
 }
 
 // TODO digi; 2016-04-08; добавить writeLine!!!
@@ -16,3 +16,5 @@ function readLine(callback) {
 module.exports = {
     readLine,
 };
+
+// TODO iu; lool; keeek
